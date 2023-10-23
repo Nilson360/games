@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="style/style.css">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" /></head>
 <body>
 <?php
     require_once "includes/dbb.php";
@@ -37,8 +37,9 @@
             }
         ?>
     </table>
-    <a href="index.php"><img src="assets/icones/icoback.png"></a>
+    <?php echo voltar(); ?>
 </div>
+
 <?php include_once "rodape.php"?>
 </body>
 </html>
