@@ -9,6 +9,7 @@
 <?php
     require_once "includes/dbb.php";
     require_once "includes/functions.php";
+    require_once "includes/login.php";
 ?>
 <div id="body">
 

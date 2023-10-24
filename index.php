@@ -11,6 +11,7 @@
 <?php
     require_once "includes/dbb.php";
     require_once "includes/functions.php";
+    require_once "includes/login.php";
     $ordem = $_GET['o'] ?? "n";
     $chave = $_GET['c'] ?? "";
 ?>
