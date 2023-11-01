@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,7 @@
 <div id="body">
 
     <?php
+        global $banco;
         $cod= $_GET['cod']?? 0;
         $busca= $banco->query("select * from jogos where cod=$cod");
     ?>
@@ -30,6 +31,17 @@
                     echo"<tr><td rowspan='3'><img src='$capa' class='full'></td></tr>";
                     echo "<tr<td><h2>$reg->nome</h2></td></tr>";
                     echo "Nota : " . number_format($reg->nota,1) ."/10";
+                    if(is_admin()){
+
+                        echo " <span class='material-symbols-outlined'> add_circle</span>";
+                        echo" <span class='material-symbols-outlined'>edit</span>";
+                        echo " <span class='material-symbols-outlined'> delete</span>";
+
+                    }elseif(is_editor()){
+
+                        echo" <span class='material-symbols-outlined'>edit</span>";
+
+                    }
                     echo "<tr><td>$reg->descricao</td></tr>";
                     echo "<tr><td>Adm</td></tr>";
                 } else {

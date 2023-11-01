@@ -14,6 +14,7 @@
     require_once "includes/login.php";
     $ordem = $_GET['o'] ?? "n";
     $chave = $_GET['c'] ?? "";
+
 ?>
     <div id="body">
         <?php
@@ -64,7 +65,17 @@
                         echo "<td><a href='detalhes.php?cod=$reg->cod'>$reg->nome</a>";
                         echo " [$reg->genero]";
                         echo "<br> $reg->produtora";
-                        echo "<td>Adm</td>";
+                       if(is_admin()){
+                            echo "<td>";
+                                echo "<span class='material-symbols-outlined'> add_circle</span>";
+                                echo"<span class='material-symbols-outlined'>edit</span>";
+                                echo " <span class='material-symbols-outlined'> delete</span>";
+                            echo "</td>";
+                       }elseif(is_editor()){
+                            echo "<td>";
+                                echo"<span class='material-symbols-outlined'>edit</span>";
+                           echo "</td>";
+                       }
                     }
                 }
             }

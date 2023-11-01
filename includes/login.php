@@ -1,6 +1,6 @@
 <?php
+session_start();
 
-session_status();
 if(!isset($_SESSION['user'])){
     $_SESSION['user'] = "";
     $_SESSION['nome'] = "";
@@ -24,7 +24,46 @@ function testarHash($senha, $hash){
     $ok=password_verify($senha,$hash);
     return $ok;
 }
+function logout(){
+    unset($_SESSION['user']);
+    unset($_SESSION['nome']);
+    unset($_SESSION['tipo']);
+    echo msg_suceeso('utilisador desconectado com sucesso!');
+    echo voltar();
+}
+function is_logado(){
+    if(empty($_SESSION['user'])){
+        return false;
+    }else{
+        return true;
+    }
+}
+function is_admin(){
+    $t = $_SESSION['tipo'] ?? null;
+    if(is_null($t)){
+        return false;
+    } else{
+        if($t === 'admin'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+function is_editor(){
+    $t = $_SESSION['tipo'] ?? null;
+    if(is_null($t)){
+        return false;
+    } else{
+        if($t === 'editor'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+
 
 //echo cripto("teste") ."<br>";
-//echo gerarHash("admin") ."<br>";
-//echo testarHash("admin", '$2y$10$j/Mi.yBDMkelbDjdQwCwpuGTQPiQn3Er9BTPZpSL.ajWw77jKdIoi');
+//echo gerarHash("editor") ."<br>";
+//echo testarHash("admin", '$2y$10$igdWKyytc1zQuOOKvuyKWuY.tV8sT1NW9RA9pLXzP2CUTJGriSfX6');

@@ -1,5 +1,5 @@
 <?php
-
+    global $banco;
     $banco = new mysqli("127.0.0.1", "root", "", "bd_games");
 
     if($banco->connect_errno){
