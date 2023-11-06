@@ -56,7 +56,7 @@
             if(!$busca){
                 echo "<tr><td>Infelizmente a busca deu errado.</td><tr/>";
             } else{
-                if($busca->num_rows == 0){
+                if($busca->num_rows === 0){
                     echo "<tr><td>Nenhum dado encontrado.</td><tr/>";
                 } else{
                     while($reg=$busca->fetch_object()){
@@ -67,9 +67,9 @@
                         echo "<br> $reg->produtora";
                        if(is_admin()){
                             echo "<td>";
-                                echo "<span class='material-symbols-outlined'> add_circle</span>";
-                                echo"<span class='material-symbols-outlined'>edit</span>";
-                                echo " <span class='material-symbols-outlined'> delete</span>";
+                                echo "<a href='crudFilms/film-add-form.php'><span class='material-symbols-outlined'> add_circle</span></a>";
+                                echo"<a href='crudFilms/film-edit.php?cod=$reg->cod'><span class='material-symbols-outlined'>edit</span></a>";
+                                echo " <a href='crudFilms/film-form.php'><span class='material-symbols-outlined'> delete</span></a>";
                             echo "</td>";
                        }elseif(is_editor()){
                             echo "<td>";
